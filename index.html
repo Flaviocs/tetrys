@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TETRIS Arcade</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕹️</text></svg>">
+</head>
+<body>
+  <div class="game-container">
+    <!-- Header -->
+    <header class="game-header">
+      <h1 class="game-title">TETRIS</h1>
+      <p class="game-subtitle">Arcade Clássico Modernizado</p>
+    </header>
+
+    <!-- Arena -->
+    <main class="game-arena">
+      <!-- Left Panel -->
+      <aside class="side-panel">
+        <!-- Hold Box -->
+        <div class="glass-box">
+          <h2 class="box-title">RESERVA</h2>
+          <canvas id="hold-canvas" width="100" height="90"></canvas>
+        </div>
+
+        <!-- Level & Lines -->
+        <div class="glass-box">
+          <h2 class="box-title">NÍVEL</h2>
+          <div id="level-value" class="stat-value">1</div>
+        </div>
+
+        <div class="glass-box">
+          <h2 class="box-title">LINHAS</h2>
+          <div id="lines-value" class="stat-value">0</div>
+        </div>
+
+        <!-- Audio Toggles -->
+        <div class="glass-box">
+          <button id="btn-sound" class="btn-arcade btn-secondary active">🔊 SFX: ON</button>
+          <button id="btn-music" class="btn-arcade btn-secondary" style="margin-top: 8px;">🔇 MÚSICA: OFF</button>
+        </div>
+      </aside>
+
+      <!-- Center Board -->
+      <section class="canvas-wrapper">
+        <canvas id="board" width="300" height="600"></canvas>
+
+        <!-- Overlay for Start / Pause / Game Over -->
+        <div id="game-overlay" class="overlay">
+          <h2 id="overlay-title" class="overlay-title">TETRIS</h2>
+          <p id="overlay-subtitle" class="overlay-subtitle">Pressione Jogar para Começar</p>
+          <button id="btn-start" class="btn-arcade">JOGAR</button>
+        </div>
+      </section>
+
+      <!-- Right Panel -->
+      <aside class="side-panel">
+        <!-- Score -->
+        <div class="glass-box">
+          <h2 class="box-title">PONTOS</h2>
+          <div id="score-value" class="stat-value highlight">0</div>
+        </div>
+
+        <!-- High Score -->
+        <div class="glass-box">
+          <h2 class="box-title">RECORDE</h2>
+          <div id="high-score-value" class="stat-value">0</div>
+        </div>
+
+        <!-- Next Pieces Queue -->
+        <div class="glass-box">
+          <h2 class="box-title">PRÓXIMAS</h2>
+          <canvas id="next-canvas" width="100" height="190"></canvas>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="glass-box">
+          <button id="btn-pause" class="btn-arcade btn-secondary">⏸ PAUSAR</button>
+          <button id="btn-restart" class="btn-arcade btn-secondary" style="margin-top: 8px;">🔄 REINICIAR</button>
+        </div>
+      </aside>
+    </main>
+
+    <!-- On-Screen Controls for Touch & Mouse -->
+    <div class="touch-controls">
+      <!-- D-Pad Controls -->
+      <div class="touch-cluster dpad-cluster">
+        <div></div>
+        <button id="ctrl-rotate" class="btn-touch" aria-label="Girar">↻<span>Girar</span></button>
+        <div></div>
+        <button id="ctrl-left" class="btn-touch" aria-label="Esquerda">←<span>Esq</span></button>
+        <button id="ctrl-down" class="btn-touch" aria-label="Descer">↓<span>Descer</span></button>
+        <button id="ctrl-right" class="btn-touch" aria-label="Direita">→<span>Dir</span></button>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="touch-cluster action-cluster">
+        <button id="ctrl-hold" class="btn-touch" aria-label="Guardar Peça">⇄<span>Hold</span></button>
+        <button id="ctrl-hard-drop" class="btn-touch btn-drop" aria-label="Queda Instantânea">⤓<span>Drop</span></button>
+      </div>
+    </div>
+
+    <!-- Controls Keyboard Guide -->
+    <footer class="glass-box controls-panel" style="width: 100%; max-width: 650px; margin-top: 5px;">
+      <h2 class="box-title" style="margin-bottom: 8px;">ATALHOS DO TECLADO</h2>
+      <div class="controls-guide" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+        <div><span>Mover:</span> <span><span class="key-badge">←</span> <span class="key-badge">→</span> ou <span class="key-badge">A</span> <span class="key-badge">D</span></span></div>
+        <div><span>Girar:</span> <span><span class="key-badge">↑</span> <span class="key-badge">W</span> ou <span class="key-badge">X</span> / <span class="key-badge">Z</span></span></div>
+        <div><span>Queda Rápida:</span> <span><span class="key-badge">↓</span> ou <span class="key-badge">S</span></span></div>
+        <div><span>Queda Instantânea:</span> <span><span class="key-badge">Espaço</span></span></div>
+        <div><span>Guardar Peça (Hold):</span> <span><span class="key-badge">C</span> ou <span class="key-badge">Shift</span></span></div>
+        <div><span>Pausar / Reiniciar:</span> <span><span class="key-badge">P</span> / <span class="key-badge">R</span></span></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="audio.js"></script>
+  <script src="tetris.js"></script>
+</body>
+</html>

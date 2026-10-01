@@ -1,0 +1,12 @@
+{
+  "name": "tetris-arcade",
+  "version": "1.0.0",
+  "description": "Modern Retro Arcade Tetris in HTML5 Canvas & Web Audio API",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 server.py"
+  },
+  "keywords": ["tetris", "game", "html5", "canvas", "arcade"],
+  "author": "",
+  "license": "MIT"
+}
